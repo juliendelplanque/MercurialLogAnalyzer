@@ -5,7 +5,9 @@ Class {
 		'changeset',
 		'user',
 		'dateAndTime',
-		'summary'
+		'summary',
+		'tag',
+		'parents'
 	],
 	#category : #'Mercurial-Model'
 }
@@ -31,6 +33,16 @@ MCommit >> dateAndTime: anObject [
 ]
 
 { #category : #accessing }
+MCommit >> parents [
+	^ parents
+]
+
+{ #category : #accessing }
+MCommit >> parents: anObject [
+	parents := anObject
+]
+
+{ #category : #accessing }
 MCommit >> summary [
 	^ summary
 ]
@@ -38,6 +50,16 @@ MCommit >> summary [
 { #category : #accessing }
 MCommit >> summary: anObject [
 	summary := anObject
+]
+
+{ #category : #accessing }
+MCommit >> tag [
+	^ tag
+]
+
+{ #category : #accessing }
+MCommit >> tag: anObject [
+	tag := anObject
 ]
 
 { #category : #accessing }

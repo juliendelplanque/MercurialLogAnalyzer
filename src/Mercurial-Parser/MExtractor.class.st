@@ -31,11 +31,19 @@ MExtractor >> entries [
 MExtractor >> entry [
 	^ super entry ==> [ :tokens |
 		MCommit new
-			changeset:( tokens at: 1);
+			changeset: (tokens at: 1);
+			tag: ((tokens at: 3) ifNotNil: #first);
+			parents: ((tokens at: 4) ifNil: [ #() ] ifNotNil: [ :col | col first reject: #isCharacter ]);
 			user: (tokens at: 5);
 			dateAndTime: (tokens at: 7);
 			summary: (tokens at: 9);
 			yourself ]
+]
+
+{ #category : #rules }
+MExtractor >> parentLine [
+	^ super parentLine ==> [ :tokens |
+		String newFrom: tokens last ]
 ]
 
 { #category : #parsing }
